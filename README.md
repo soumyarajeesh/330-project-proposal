@@ -90,3 +90,70 @@ Testing:
 Write unit and integration tests for all routes.
 Aim for test coverage greater than 80%.
 
+Project Overview
+The Simple Online Store API is a RESTful service designed to handle basic operations for an online store. The API allows for user registration and authentication, as well as managing products and orders. This document provides a detailed evaluation of the project's approach, results, learning experiences, and potential improvements.
+
+Self-Evaluation:
+
+Approach and Results
+
+Initial Setup and Structure
+The project was structured following the MVC (Model-View-Controller) pattern, which helped in maintaining a clear separation of concerns. The main components included:
+
+Models: Defined the data structure using Mongoose schemas.
+Controllers: Handled the business logic and interacted with the models.
+Routes: Mapped HTTP requests to controller methods.
+Middleware: Included authentication and authorization logic.
+This structure made it easier to manage the codebase and ensured that each part of the application had a single responsibility.
+
+Development Process
+User Authentication:
+
+Implemented user registration and login endpoints.
+Used JWT for secure authentication.
+Results: The authentication module worked well and securely managed user sessions.
+Product Management:
+
+Created CRUD endpoints for managing products.
+Results: The product endpoints were functional, but there were issues with authorization in testing, leading to forbidden errors.
+Order Management:
+
+Implemented endpoints to create, retrieve, update, and delete orders.
+Results: Most order operations worked correctly, but some tests failed due to internal server errors.
+
+What Worked Well:
+
+Modular Structure: The modular structure using MVC helped in maintaining and expanding the codebase.
+Authentication: The implementation of JWT for authentication was effective and provided secure access control.
+Testing with Jest: Writing tests using Jest helped in identifying issues early and ensured that the endpoints behaved as expected.
+
+Challenges and Issues:
+
+Authorization Errors: Tests for product routes frequently failed due to authorization issues, resulting in 403 Forbidden errors.
+Database Connection Issues: At times, tests failed due to database connection problems, such as address already in use errors.
+Test Environment Setup: Ensuring a clean and isolated test environment was challenging, leading to test failures related to port conflicts and database state.
+Learning Experiences
+Comprehensive Testing: The importance of thorough testing was evident. Writing unit and integration tests helped in identifying bugs and issues that were not apparent during manual testing.
+Error Handling: Improved understanding of error handling in Express and Mongoose, which is crucial for building robust APIs.
+JWT Authentication: Gained deeper insights into implementing and managing JWT tokens for secure authentication.
+Potential Improvements
+Enhanced Authorization Logic: Refactor the authorization middleware to ensure it works correctly across all routes and tests.
+Improved Error Handling: Implement more granular error handling to provide clearer error messages and avoid internal server errors.
+Test Isolation: Enhance the test setup to ensure complete isolation and prevent issues like address conflicts. This might include using different ports or databases for testing.
+Documentation: Improve API documentation to provide clear usage instructions for each endpoint, including expected responses and error codes.
+
+What Didn't Work
+
+Initial Testing Setup: The initial setup for testing was problematic, leading to issues with database connections and port conflicts.
+Error Reporting in Tests: The error messages in tests were sometimes not descriptive enough to quickly diagnose the issues.
+Environment Management: Managing different environments (development, testing, production) was challenging and sometimes led to configuration issues.
+
+Conclusion:
+
+Overall, the Simple Online Store API project was a valuable learning experience. It provided practical insights into building and testing RESTful APIs, handling authentication, and managing application state with a database. While there were challenges, especially with testing and authorization, the project was a significant step towards becoming proficient in backend development with Node.js, Express, and MongoDB. Future improvements will focus on refining the authorization logic, enhancing error handling, and ensuring robust test environments.
+
+
+
+
+
+

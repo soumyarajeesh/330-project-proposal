@@ -1,21 +1,22 @@
+
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-dotenv.config({ path: './config/config.env' });
+// Load environment variables from .env file
+dotenv.config({ path: '/Users/soumyarajeesh/Desktop/project330/UW-SimpleOnlineStore-project/config/config.env' });
+console.log(process.env.PORT); 
+console.log(process.env.MONGO_URI); 
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    });
+    console.log('Attempting to connect to MongoDB...');
+    await mongoose.connect(process.env.MONGO_URI);
     console.log('MongoDB Connected');
   } catch (error) {
-    console.error(error.message);
+    console.error('MongoDB connection failed:', error.message);
     process.exit(1);
   }
 };
 
 module.exports = connectDB;
+
